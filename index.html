@@ -1,0 +1,433 @@
+<!--
+	Anthony Pogue
+	Project 1
+	Term 1203
+	ASD
+-->
+
+
+<!doctype html>  
+<html lang="en">
+	<head>
+	
+		<meta charset="utf-8">
+		
+		<title>Serial Box</title>
+		
+		<!--  Mobile viewport optimized: j.mp/bplateviewport -->
+		<meta name="HandheldFriendly" content="True">
+		<meta name="MobileOptimized" content="320"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<!-- Mobile IE needs ClearType for smoothing fonts -->
+		<meta http-equiv="cleartype" content="on">
+		
+		<!-- StyleSheets under here -->
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b2/jquery.mobile-1.0b2.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/styles.css" />
+		
+		<!-- JavaScript is normally at the end of the body, except for Modernizr which enables HTML5 elements & feature detects -->
+		<script src="js/libs/modernizr.custom.min.js"></script>
+	
+	</head>
+
+	<body>
+		<!-- launch page -->
+		<div data-role="page" id="launch">
+			<div data-role="header" data-position="fixed">
+				<h1>Serial Box</h1>
+			</div>
+		
+			<div data-role="content">
+				<!-- use h3 tags for button titles (preferred) and p tags for details -->
+				<a href="#home" data-role="button">
+					<img src="images/serialboximg.jpg" alt="Serial Box" />
+				</a>
+			</div>
+		</div>
+		<!-- home page -->
+		<div data-role="page" id="home">
+			<div data-role="header" data-position="fixed">
+				<h1>Serial Box</h1>
+			</div>
+			
+			<div data-role="content">
+				<ul data-role="listview" data-inset="true">
+					<!-- use h3 tags for button titles (preferred) and p tags for details -->
+					<li>
+						<a href="#login">
+							<img src="images/loginicon.jpg" />
+							<h3>Login</h3>
+							<p>Access your serial box!</p>
+						</a>
+					</li>
+					<li>
+						<a href="#signup">
+							<img src="images/signupbtn.jpg" />
+							<h3>Not a member? Sign up here!</h3>
+							<p>Resister to open your serial box!</p>
+						</a>
+					</li>
+				</ul>
+			</div>
+	
+			<div data-role="footer" data-position="fixed">
+				<h4>Drop-off your serial numbers!</h4>
+			</div>
+		</div>
+
+		<!-- login page -->
+		<div data-role="page" id="login">
+			<div data-role="header" data-position="fixed">
+				<h1>Login</h1>
+			</div>
+
+			<div data-role="content">
+				<ul data-role="listview">
+					<li>
+						<label for="username">Username</label>
+						<input type="text" id="username" placeholder="username" />
+					</li>
+					<li>
+						<label for="pword">Password</label>
+						<input type="password" id="pword" placeholder="password" />
+					</li>
+				</ul>
+			</div>
+
+			<div data-role="fieldcontain">
+				<a href="#account" data-role="button">Login</a>
+				<a href="#signup">Not a Member? Sign Up Now!</a>
+			</div>
+			
+			<div data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#home">Home</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<!-- signup page -->
+		<div data-role="page" id="signup">
+			<div data-role="header" data-position="fixed">
+				<h1>Register</h1>
+			</div>
+
+			<div data-role="content">
+				<form action="" method="post" id="recordsignup">
+					<div data-role="fieldcontain">
+						<!-- Input first and last name -->
+						<label for="flname">My name is:</label>
+						<input type="text" id="flname" name="flname" placeholder="First and Last Name" class="required" />
+						</div>
+						
+					<div data-role="fieldcontain">
+						<fieldset data-role="controlgroup">
+							<!-- Radio button for gender -->
+							<legend>What is your gender?</legend>
+								<label for="male">Male</label>
+								<input type="radio" id="male" value="Male" name="male" />
+								<label for="female">Female</label>
+								<input type="radio" id="female" value="Female" name="female" />
+						</fieldset>
+					</div>
+					
+					<div data-role="fieldcontain">
+						<!-- Input email Address -->
+						<!-- inline element -->
+						<label for="addy">My email address is:</label>
+						<!-- inline element -->
+						<input type="email" id="addy" name="addy" placeholder="example@email.com" class="required email" />
+					</div>
+					
+					<div data-role="fieldcontain">
+						<!-- Input username -->
+						<!-- block element -->
+						<!-- inline element -->
+						<label for="username">I want my username to be:</label>
+						<!-- inline element -->
+						<input type="text" id="username" name="username" placeholder="username" />
+						<!-- block element -->
+						<p><small>(must be at least 4 characters; no spaces, "-", or "&")</small></p>
+					</div>
+
+					<div data-role="fieldcontain">
+						<!-- Input password -->
+						<!-- inline element -->
+						<label for="pword">I want my password to be:</label>
+						<!-- inline element -->
+						<input type="password" id="pword" placeholder="password" />
+						<p><small>(must be at least 6 characters, no spaces)</small></p>
+					</div>
+					
+					<div data-role="fieldcontain">
+						<label for="cnfrmpass">Please confirm your password:</label>
+						<input type="password" id="cnfrmpass" />
+					</div>
+					
+					<div data-role="fieldcontain">
+						<label for="select">What are you using this for?</label>
+						<select name="select" id="select" data-native-menu="false">
+						<option data-placeholder="true">Please Select One</option>
+						<optgroup label="What are you using this for?">
+							<option value="personal">Personal</option>
+							<option value="business">Business</option>
+							<option value="both">Both</option>
+						</optgroup>
+						</select>
+					</div>
+					
+					<div data-role="fieldcontain">
+						<input type="submit" value="Submit" data-theme="a" />
+					</div>
+					
+					<a href="#signuperrors" id="rberrorslink" data-rel="dialog" data-transition="pop">Open Errors</a>
+				</form>
+			</div>
+			
+			<div data-role="footer" data-position="fixed" data-id="signup">
+				<h4>Be a member, add serial!</h4>
+			</div>
+		</div>
+
+		<!-- account page -->
+		<div data-role="page" id="account">
+			<div data-role="header" data-position="fixed">
+				<h1>My Account</h1>
+			</div>
+			
+			<div data-role="content">
+				<ul data-role="listview">
+					<li>
+						<a href="#itemcount" data-role="button">Add Serial</a>
+					</li>
+					<li>
+						<a href="#getitem" data-role="button">Get Serial</a>
+					</li>
+				</ul>
+			</div>
+			
+			<div data-role="footer" data-position="fixed" data-id="account">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#account" data-icon="star" class="ui-btn-active">My Account</a></li>
+						<li><a href="#itemcount" data-icon="star">Add Serial</a></li>
+						<li><a href="#getitem" data-icon="gear">Get Serial</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<!-- itemcount page -->
+		<div data-role="page" id="itemcount">
+			<div data-role="header" data-position="fixed">
+				<h1>Serial Box</h1>
+			</div>
+			
+			<div data-role="content">
+				<div data-role="fieldcontain">
+					<!-- Range slider quantity -->
+					<label for="qty">How many serial numbers would you like to add?</label>
+					<input type="range" min="1" max="10" id="qty" value="1"/>
+				</div>
+				
+				<a href="#additem" data-role="button">Add Serial</a>
+			</div>
+			
+		</div>
+		
+		<!-- additem page -->
+		<div data-role="page" id="additem">
+			<div data-role="header" data-position="fixed">
+				<h1>Add Serial</h1>
+			</div>
+			
+			<div data-role="content">
+					<div data-role="fieldcontain">
+						<label for="itemName">What is the item name? </label>
+						<input type="text" id="itemName" value="" />
+					</div>
+					
+					<div data-role="fieldcontain">
+						<label for="serialNum">What is the serial number?</label>
+						<input type="text" id="serialNum" value="" />
+					</div>
+					<a href="#success" data-role="button" id="submit">Done!</a>
+			</div>
+		
+			<div data-role="footer" data-position="fixed" data-id="account">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#account" data-icon="star">My Account</a></li>
+						<li><a href="#itemcount" data-icon="star" class="ui-btn-active">Add Serial</a></li>
+						<li><a href="#getitem" data-icon="gear">Get Serial</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<!-- getitem page -->
+		<div data-role="page" id="getitem">
+			<div data-role="header" data-position="fixed">
+				<h1>Get Serial</h1>
+			</div>
+			
+			<div data-role="content">
+				<ul data-role="listview" data-filter="true">
+					<li>
+						<a href="#detail">
+							<img src="images/macbookproicon.jpg" />
+							<h3>Macbook Pro</h3>
+							<p>Date Added: January 12, 2012</p>
+							<p>Serial Number: AGK4LO77P9HU6N2IV3K3L</p>
+							<p>Mac OS X: Version 10.6.8: 2.2 GHz Intel Core i7 Processor</p>
+						</a>
+					</li>
+					<li>
+						<a href="#detail">
+							<img src="images/macairicon.jpg" />
+							<h3>Macbook Air</h3>
+							<p>Date Added: January 3, 2012</p>
+							<p>Serial Number: AGK4LO77P9HU6N2IV3K3L</p>
+							<p>Mac OS X: Version 10.6.1: 1.8 GHz Intel Core i7 Processor</p>
+						</a>
+					</li>
+					<li>
+						<a href="#detail">
+							<img src="images/imacicon.jpg" />
+							<h3>iMac</h3>
+							<p>Date Added: December 4, 2011</p>
+							<p>Serial Number: AGK4LO77P9HU6N2IV3K3L</p>
+							<p>Mac OS X: Version 10.7.8: 2.8 GHz Intel Core i7 Processor</p>
+						</a>
+					</li>
+					<li>
+						<a href="#detail">
+							<img src="images/ipad2icon.jpg" />
+							<h3>iPad 2</h3>
+							<p>Date Added: August 17, 2011</p>
+							<p>Serial Number: AGK4LO77P9HU6N2IV3K3L</p>
+							<p>iOS X: Version 10.5.0: A5 Chip Processor</p>
+						</a>
+					</li>
+					<li>
+						<a href="#detail">
+							<img src="images/iphone4Sicon.jpg" />
+							<h3>iPhone 4S</h3>
+							<p>Date Added: July 8, 2011</p>
+							<p>Serial Number: AGK4LO77P9HU6N2IV3K3L</p>
+							<p>iOS X: Version 10.6.2: A5 Chip Processor</p>
+						</a>
+					</li>
+					<li>
+						<a href="#detail">
+							<img src="images/ipodtouchbtn.jpg" />
+							<h3>iPod Touch</h3>
+							<p>Date Added: June 14, 2011</p>
+							<p>Serial Number: AGK4LO77P9HU6N2IV3K3L</p>
+							<p>iOS X: Version 10.7.1: A5 Chip Processor</p>
+						</a>
+					</li>
+					<li>
+						<a href="#detail">
+							<img src="images/macproicon.jpg" />
+							<h3>Mac Pro</h3>
+							<p>Date Added: February 18, 2011</p>
+							<p>Serial Number: AGK4LO77P9HU6N2IV3K3L</p>
+							<p>Mac OS X: Version 10.5.3: 2.2 GHz Intel Core i7 Processor</p>
+						</a>
+					</li>
+				</ul>
+			</div>
+					
+			<div data-role="footer" data-position="fixed" data-id="account">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#account" data-icon="star">My Account</a></li>
+						<li><a href="#itemcount" data-icon="star">Add Serial</a></li>
+						<li><a href="#getitem" data-icon="gear" class="ui-btn-active">Get Serial</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<!-- success page -->
+		<div data-role="page" id="success">
+			<div data-role="header" data-position="fixed">
+				<h1>Success!</h1>
+			</div>
+			
+			<div data-role="content">
+					<div>
+						<a href="#itemcount" data-role="button">Add More Serial</a>
+					</div>
+					
+					<div>
+						<a href="#getitem" data-role="button">View Your Serial</a>
+					</div>
+			</div>
+			
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#" id="clear">Clear Stored Data</a></li>
+					<li><a href="#" id="displayLink">Display Stored Data</a></li>
+				</ul>
+			</div>
+			
+			<div data-role="footer" data-position="fixed" data-id="success">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#itemcount" data-icon="star">Add Serial</a></li>
+						<li><a href="#getitem" data-icon="gear">Get Serial</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<!-- detail page -->
+		<div data-role="page" id="detail">
+			<div data-role="header" data-position="fixed">
+				<h1>Details</h1>
+			</div>
+			
+			<div data-role="content">
+				<div>
+					<img src="images/appleitems.jpg" />
+					<h3>Here is the details of the item you have selected!</h3>
+					<p>Serial Number: AGK4LO77P9HU6N2IV3K3L</p>
+					<p>Mac OS X: Version 10.5.3: 2.2 GHz Intel Core i7 Processor</p>
+				</div>
+			</div>
+			
+			<div data-role="footer" data-position="fixed" data-id="success">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#account" data-icon="star">My Account</a></li>
+						<li><a href="#itemcount" data-icon="star">Add Serial</a></li>
+						<li><a href="#getitem" data-icon="gear">Get Serial</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<!--  -->
+		<div data-role="dialog" id="signuperrors">
+			<div data-role="header" data-position="fixed">
+				<h1>Missing fields!</h1>
+			</div>
+			
+			<div data-role="content">
+				<ul>
+					<li>Test</li>
+				</ul>
+			</div>
+		
+		<!-- JavaScript under here (libs, addons, custom scripts)-->
+		<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
+		<script type="text/javascript" src="js/libs/jquery.validate.min.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
+</html>
