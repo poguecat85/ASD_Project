@@ -9,6 +9,7 @@ var parseSignupForm = function (data) {
 $(document).ready(function(){
 	var rbform = $('#recordsignup');
 	var	rberrorslink = $('#rberrorslink');
+	// form validation in jqm
 	rbform.validate({
 		invalidHandler: function(form, validator){
 			rberrorslink.click();
@@ -26,5 +27,6 @@ $(document).ready(function(){
 			parseSignupForm(data);
 		}
 	});
-
+	
+	$('#butts li').fadeOut();
 });
