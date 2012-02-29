@@ -13,11 +13,6 @@ $('#signup').live('pageinit', function () {
 	
 	formSave.on('click', function(){
 		// form validation in jqm
-		if () {
-		
-		} else {
-		
-		}
 		rbform.validate({
 			invalidHandler: function(form, validator){
 				rberrorslink.click();
@@ -35,7 +30,7 @@ $('#signup').live('pageinit', function () {
 				console.log(data);		
 			}
 		})
-	});
+	},
 	
 	var storeData = function (myData) {
 		var flname = $('#flname');
