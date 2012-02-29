@@ -27,10 +27,10 @@ $('#signup').live('pageinit', function () {
 			},
 			submitHandler: function(){
 				var data = rbform.serializeArray();
-				console.log(data);		
-			}
-		})
-	},
+				console.log(data);
+			} // ending function for submitHandler
+		}); // ending function for rbform.validate
+	}); // ending function for formSave
 	
 	var storeData = function (myData) {
 		var flname = $('#flname');
