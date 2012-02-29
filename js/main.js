@@ -6,7 +6,7 @@ var parseSignupForm = function (data) {
 	console.log(data); 
 };
 
-$('#signup').live('pageinit', function(){
+$('#signup').live('click', function storeData(key){
 	var rbform = $('#recordsignup');
 	var	rberrorslink = $('#rberrorslink');
 	// form validation in jqm
@@ -28,28 +28,26 @@ $('#signup').live('pageinit', function(){
 		}
 	});
 	
-	function storeData(key) {
-		// if there is no key, this means this is a brand new item and we need a new key
-		var value = $.jStorage.get("key");
-		if(!value){
-			// if not - load the data from the server
-		 	value = load_data_from_server()
-		 	// and save it
-			$.jStorage.set("key",value);
-		}
-		// gather up all our form field values and store in an object
-		//Object properties contain array with the form label and the input value.
-		var item = {};
-		item.group = ["Group:", $('groups').value];
-		item.flname = ["First and Last Name:", $('flname').value];
-		item.addy = ["Email:", $('addy').value];
-		item.user = ["Username:", $('username').value];
-		item.pass = ["Password:", $('pword').value];
-		item.cnfrmpass = ["Confirm Password:", $('cnfrmpass').value];
-		item.itemName =["Item Name:", $('itemName').value];
-		item.serialNums =["Serial Number:", $('serialNums').value];
-		// data into local storage: use stringify to convert our object to a string
-		localStorage.setItem(id, JSON.stringify(item));
-		alert(localStorage.getItem(localStorage.key(0)));
-	}
+	var storeData = function (key) {
+		var flname = new Date();
+	    var male = ('#male');
+	    var female = $('#female').val();
+	    var addy = $('#addy').val();
+	    var username = $('#username').val();
+	    var pword = $('#pword').val();
+	    var select = $('#select').val();
+	    var item = [
+		    flname,
+		    male,
+		    female,
+		    addy,
+		    username,
+		    pword,
+		    select
+	    ];
+	
+	    localStorage.setItem(key, item);
+	    location.reload();
+	    alert("Your information has saved!");
+	};
 });
