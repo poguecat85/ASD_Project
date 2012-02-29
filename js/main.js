@@ -6,7 +6,7 @@ var parseSignupForm = function (data) {
 	console.log(data); 
 };
 
-$(document).ready(function(){
+$(#signup).live('pageinit', function(){
 	var rbform = $('#recordsignup');
 	var	rberrorslink = $('#rberrorslink');
 	// form validation in jqm
@@ -28,5 +28,5 @@ $(document).ready(function(){
 		}
 	});
 	
-	$('#butts li').fadeOut();
+	
 });
