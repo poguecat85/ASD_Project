@@ -67,7 +67,7 @@ function storeData(key) {
 	if (!key) {
 		var id = Math.floor(Math.random()*10000001);
 	} else {
-		// set the id to the existing key we're editing so that it will save over the data
+		// set the id to the existing key we're editing so that it will over the data
 		// the key is the same key that's been passed along from the editSubmit event handler
 		// to the vlidate function, and then passed here, into the storeData function.
 		id = key;
@@ -83,7 +83,7 @@ function storeData(key) {
 	item.cnfrmpass = ["Confirm Password:", $('cnfrmpass').value];
 	item.itemName =["Item Name:", $('itemName').value];
 	item.serialNums =["Serial Number:", $('serialNums').value];
-	// save data into local storage: use stringify to convert our object to a string
+	// data into local storage: use stringify to convert our object to a string
 	localStorage.setItem(id, JSON.stringify(item));
 	alert(localStorage.getItem(localStorage.key(0)));
 }
