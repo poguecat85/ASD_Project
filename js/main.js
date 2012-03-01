@@ -1,6 +1,8 @@
 // Verify email alert
 // alert("Thank you for signing up!  Please check your email to activate your account.");
-//mobile DOM loader ($) mobile method
+
+
+//mobile DOM loader ($) for #signup page mobile method
 $('#signup').live('pageinit', function () {
 	var rbform = $('#recordsignup');
 	var	rberrorslink = $('#rberrorslink');
