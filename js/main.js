@@ -24,40 +24,14 @@ $('#signup').live('pageinit', function () {
 				var data = rbform.serializeArray();
 				console.log(data);
 				storeData(data);
+				$.mobile.changePage($('#account'));
 			} // ending function for submitHandler
 		}); // ending function for rbform.validate
 	}); // ending function for formSave
-	
 	var storeData = function (myData) {
-		var flname = $('#flname');
-	    var male = $('#male');
-	    var female = $('#female').val();
-	    var addy = $('#addy').val();
-	    var username = $('#username').val();
-	    var pword = $('#pword').val();
-	    var select = $('#select').val();
-	    var key = localStorage.key(i);
-	    var item = [
-		    flname,
-		    male,
-		    female,
-		    addy,
-		    username,
-		    pword,
-		    select
-	    ];
-		// if there is no key, this means this is a brand new item and we need a new key
-		if (!key) {
-			var id = Math.floor(Math.random()*10000001);
-		} else {
-			// set the id to the existing key we're editing so that it will over the data
-			// the key is the same key that's been passed along from the editSubmit event handler
-			// to the vlidate function, and then passed here, into the storeData function.
-			id = key;
-		};
-	
-	    localStorage.setItem(key, item);
-	    location.reload();
+	    // setItem from signup_data
+	    localStorage.setItem('signup_data', myData);
 	    alert("Your information has saved!");
+	    
 	}; // ending storeData function
 }); // ending #signup page load
