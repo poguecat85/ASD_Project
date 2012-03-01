@@ -37,3 +37,8 @@ $('#signup').live('pageinit', function () {
 	    
 	}; // ending storeData function
 }); // ending #signup page load
+
+// mobile DOM loader ($) for #success page mobile method
+$('#success').live('pageintit', function (){
+	// clear data code
+}); // ending #success page load
