@@ -39,16 +39,20 @@ $('#signup').live('pageinit', function () {
 }); // ending #signup page load
 
 // mobile DOM loader ($) for #success page mobile method
-$('#success').live('pageintit', function () {
+$('#success').live('pageinit', function () {
 	var clearLink = $('#clear');
-	
+	var data = localStorage.getItem('signup_data');
+	console.log("this page is working!");
 	// clearData function
 	clearLink.on('click', function(){
-		var clearData = function (myData) {
-			localStorage.clear();
-		}; //ending clearData function
-		clearData();
+
+		clearData(data);
+		console.log("clearLink pressed!");
+		alert("Data has been cleared");
 		$.mobile.changePage($('#account'));
 	
-	}); // ending delData function
+	}); // ending clearLink function
+	var clearData = function (myData) {
+		localStorage.clear('signup_data');
+	}; //ending clearData function
 }); // ending #success page load
