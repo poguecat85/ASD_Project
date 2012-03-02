@@ -8,6 +8,7 @@ $('#signup').live('pageinit', function () {
 	var	rberrorslink = $('#rberrorslink');
 	var formSave = $('#submit');
 	
+	// save form function
 	formSave.on('click', function(){
 		// form validation in jqm
 		rbform.validate({
