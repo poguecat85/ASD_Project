@@ -35,11 +35,20 @@ $('#signup').live('pageinit', function () {
 	    // setItem from signup_data
 	    localStorage.setItem('signup_data', myData);
 	    alert("Your information has saved!");
-	    
 	}; // ending storeData function
 }); // ending #signup page load
 
 // mobile DOM loader ($) for #success page mobile method
-$('#success').live('pageintit', function (){
-	// clear data code
+$('#success').live('pageintit', function () {
+	var clearLink = $('#clear');
+	
+	// clearData function
+	clearLink.on('click', function(){
+		var clearData = function (myData) {
+			localStorage.clear();
+		}; //ending clearData function
+		clearData();
+		$.mobile.changePage($('#account'));
+	
+	}); // ending delData function
 }); // ending #success page load
