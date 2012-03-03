@@ -42,6 +42,10 @@ $('#signup').live('pageinit', function () {
 $('#success').live('pageinit', function () {
 	var clearLink = $('#clear');
 	var data = localStorage.getItem('signup_data');
+	var editLink = $('#edit');
+	var clearData = function (myData) {
+		localStorage.clear('signup_data');
+	}; //ending clearData function
 	console.log("this page is working!");
 	// clearData function
 	clearLink.on('click', function(){
@@ -52,7 +56,49 @@ $('#success').live('pageinit', function () {
 		$.mobile.changePage($('#account'));
 	
 	}); // ending clearLink function
-	var clearData = function (myData) {
-		localStorage.clear('signup_data');
-	}; //ending clearData function
+	
+	// change page to edit page
+	editLink.on('click', function (){
+		$.mobile.changePage($('#signup'));
+		data;
+		console.log("data retrieved!");
+	});
+	
 }); // ending #success page load
+
+// mobile Dom loader ($) for #edit page mobile method
+$('#edit').live('pageinit', function(){
+	var formEdit = $('#editForm');
+	var	errorLink = $('#errlnk');
+	var sbtForm = $('#editSub');
+	
+	// save form function
+	sbtForm.on('click', function(){
+		console.log("works");
+		// form validation in jqm
+		editForm.validate({
+			invalidHandler: function(form, validator){
+				errorLink.click();
+				var html = '';
+				for(var key in validator.submitted){
+					var label = $('label[for^="' + key +'"]').not('[generated]');
+					var legend = label.closest('fieldset').find('.ui-controlgroup-label');
+					var fieldname = legend.length ? legend.text() : label.text();
+					html += '<li>' + fieldname + '</li>';
+				}
+				$("#editErr ul").html(html);
+			},
+			submitHandler: function(){
+				var data = formEdit.serializeArray();
+				console.log(data);
+				storeData(data);
+				$.mobile.changePage($('#account'));
+			} // ending function for submitHandler
+		}); // ending function for rbform.validate
+	}); // ending function for formSave
+	var storeData = function (myData) {
+	    // setItem from signup_data
+	    localStorage.setItem('signup_data', myData);
+	    alert("Your information has saved!");
+	}; // ending storeData function
+});
