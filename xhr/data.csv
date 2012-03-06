@@ -1,0 +1,5 @@
+Title, Type, Name, Email, Username, Password, Cnfrmpass
+Contact 1, Personal, Mitchell Pogue, mapjr1508@gmail.com, mapjr1508, pass, pass
+
+"Title", "Type", "Name", "Email", "Username", "Password", "Cnfrmpass"
+"Contact 2", "Business", "Anthony Pogue", "antp85@gmail.com", "antp85", "myword", "myword"
