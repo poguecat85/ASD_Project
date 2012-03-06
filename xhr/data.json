@@ -1,5 +1,5 @@
 
-var json = {
+{
 	"contact1": {
 		"group": ["Group:", "Personal"],
 		"flname": ["First and Last Name:", "Mitchell Pogue"],
@@ -22,6 +22,3 @@ var json = {
 
 	}
 };
-
-var serializedItem = JSON.stringify(autoFillData);
-console.log(serializedItem);
