@@ -38,6 +38,7 @@ $('#xmldata').on('click', function(){
 		dataType: 'xml',
 		success: function(xml){
 			$(xml).find("contact").each(function(){
+   				console.log($(xml).find("contact"));
    				var title = $(this).find('title').text();
    				var type = $(this).find('type').text();
    				var name = $(this).find('name').text();

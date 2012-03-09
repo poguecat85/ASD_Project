@@ -1,5 +1,4 @@
-<!-- data xml file -->
-<?xml version="1.0" encoding="UTF-8"?>
+
 <contacts>
 	<contact>
 		<title>Contact 1</title>
@@ -8,7 +7,7 @@
 		<email>mapjr1508@gmail.com</email>
 		<username>mapjr1508</username>
 		<password>pass</password>
-		<cnfrmpass>pass</confrmpass>
+		<cnfrmpass>pass</cnfrmpass>
 	</contact>
 	<contact>
 		<title>Contact 2</title>
@@ -17,6 +16,6 @@
 		<email>antp85@gmail.com</email>
 		<username>antp85</username>
 		<password>myword</password>
-		<cnfrmpass>myword</confrmpass>
+		<cnfrmpass>myword</cnfrmpass>
 	</contact>
 </contacts>
