@@ -78,10 +78,10 @@ $('#csvdata').on('click', function(){
 			for (var i=1; i<allInfo.length; i++) {
 				var data = allInfo[i].split(',');
 				if (data.length == headers.length) {
-					var guests = []; 
+					var forminfo = []; 
 
 					for (var j=0; j<headers.length; j++) {
-						guests.push(data[j]); 
+						forminfo.push(data[j]); 
 					}
 					info.push(guests); 
 				}
