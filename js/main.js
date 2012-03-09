@@ -83,7 +83,7 @@ $('#csvdata').on('click', function(){
 					for (var j=0; j<headers.length; j++) {
 						forminfo.push(data[j]); 
 					}
-					info.push(guests); 
+					info.push(forminfo); 
 				}
 
 			}
