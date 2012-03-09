@@ -1,23 +1,23 @@
 {
-	"contact1": {
-		"group": ["Group:", "Personal"],
-		"flname": ["First and Last Name:", "Mitchell Pogue"],
-		"addy": ["Email:", "mapjr1508@gmail.com"],
-		"user": ["Username:", "mapjr1508"],
-		"pass": ["Password:", "pass"],
-		"cnfrmpass": ["Confirm Password:", "pass"],
-		"itemName": ["Item Name:", "iMac"],
-		"serialNums": ["Serial Number", "77777777777"]
+	"contacts":[{
+		"group": "Personal",
+		"flname": "Mitchell Pogue",
+		"addy": "mapjr1508@gmail.com",
+		"user": "mapjr1508",
+		"pass": "pass",
+		"cnfrmpass": "pass",
+		"itemName": "iMac",
+		"serialNums": "77777777777"
 	},
-	"contact2": {
-		"group": ["Group:", "Business"],
-		"flname": ["First and Last Name:", "William Vese"],
-		"addy": ["Email:", "wivese86@yahoo.com"],
-		"user": ["Username:", "wivese86"],
-		"pass": ["Password:", "pass"],
-		"cnfrmpass": ["Confirm Password:", "pass"],
-		"itemName": ["Item Name:", "iMac"],
-		"serialNums": ["Serial Number", "77777777777"]
+	{
+		"group": "Business",
+		"flname": "William Vese",
+		"addy": "wivese86@yahoo.com",
+		"user": "wivese86",
+		"pass": "pass",
+		"cnfrmpass": "pass",
+		"itemName": "iMac",
+		"serialNums": "77777777777"
 
 	}
-}
+]}
