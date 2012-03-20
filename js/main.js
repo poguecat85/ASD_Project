@@ -7,19 +7,6 @@ $('#signup').live('pageinit', function () {
 	var rbform = $('#recordsignup');
 	var	rberrorslink = $('#rberrorslink');
 	var formSave = $('#submit');
-	var key = "data"
-	var flname = $("#flname").val();
-	var addy = $("#addy").val();
-	var user = $("#user").val();
-	var pass = $("#pass").val();
-	var select = $("#select").val();
-	var item = [
-		flname,
-		addy,
-		user,
-		pass,
-		select
-	];
 	
 	// save form function
 	formSave.on('click', function(){
@@ -54,7 +41,7 @@ $('#signup').live('pageinit', function () {
 // mobile DOM loader ($) for #success page mobile method
 $('#success').live('pageinit', function () {
 	var clearLink = $('#clear');
-	var data = localStorage.getItem('data', item);
+	var data = localStorage.getItem('signup_data', myData);
 	var editLink = $('#edit');
 	var clearData = function (myData) {
 		localStorage.clear('signup_data');
