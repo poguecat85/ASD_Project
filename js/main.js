@@ -1,12 +1,10 @@
-// Verify email alert
-// alert("Thank you for signing up!  Please check your email to activate your account.");
-
-
 //mobile DOM loader ($) for #signup page mobile method
 $('#signup').live('pageinit', function () {
 	var rbform = $('#recordsignup');
 	var	rberrorslink = $('#rberrorslink');
 	var formSave = $('#submit');
+	var d = new Date();
+	var key = (d.getTime());
 	
 	// save form function
 	formSave.on('click', function(){
@@ -25,15 +23,18 @@ $('#signup').live('pageinit', function () {
 			},
 			submitHandler: function(){
 				var data = rbform.serializeArray();
-				console.log(data);
 				storeData(data);
-				$.mobile.changePage($('#account'));
+				$.mobile.changePage($('#success'));
 			} // ending function for submitHandler
 		}); // ending function for rbform.validate
 	}); // ending function for formSave
 	var storeData = function (myData) {
-	    // setItem from signup_data
-	    localStorage.setItem('signup_data', myData);
+	    var dataObj = {};
+		$.each(myData, function(i,item){
+			dataObj[item.name] = item.value;
+		});
+	    console.log(dataObj);
+	    localStorage.setItem(key, JSON.stringify(dataObj));
 	    alert("Your information has saved!");
 	}; // ending storeData function
 }); // ending #signup page load
@@ -41,31 +42,28 @@ $('#signup').live('pageinit', function () {
 // mobile DOM loader ($) for #success page mobile method
 $('#success').live('pageinit', function () {
 	var clearLink = $('#clear');
-	var data = localStorage.getItem('signup_data', myData);
-	var editLink = $('#edit');
-	var clearData = function (myData) {
-		localStorage.clear('signup_data');
-	}; //ending clearData function
-	console.log("this page is working!");
-	// clearData function
-	clearLink.on('click', function(){
-
-		clearData(data);
-		console.log("clearLink pressed!");
-		alert("Data has been cleared");
-		$.mobile.changePage($('#account'));
-	
-	}); // ending clearLink function
-	
-	// change page to edit page
-	editLink.on('click', function (){
-		$.mobile.changePage($('#signup'));
-		data;
-		console.log("data retrieved!");
+	var displayLink = $('#display');
+	displayLink.on('click', function(){
+		for (var i = 0; i < localStorage.length; i++) {
+			$('#dataPlay').append(localStorage.getItem(localStorage.key(i)));	
+		};
 	});
 	
-}); // ending #success page load
+	/*
+	if (localStorage.key === "") {
+		alert("There is no data saved!");
+	} else {
+		clearLink.on('click', function(){
+			clearData(data);
+			console.log("clearLink pressed!");
+			alert("Data has been cleared");
+			$.mobile.changePage($('#account'));
+		}); // ending clearLink function
+	}; // ending clearLink function
+	*/
+}); //success page end 
 
+	
 // mobile Dom loader ($) for #edit page mobile method
 $('#edit').live('pageinit', function(){
 	var formEdit = $('#editForm');
