@@ -1,5 +1,9 @@
+$('#home').live('pageshow', function () {
+	console.log("I am working");
+});
+
 //mobile DOM loader ($) for #signup page mobile method
-$('#signup').live('pageinit', function () {
+$('#signup').live('pageshow', function () {
 	var rbform = $('#recordsignup');
 	var	rberrorslink = $('#rberrorslink');
 	var formSave = $('#submit');
@@ -24,23 +28,34 @@ $('#signup').live('pageinit', function () {
 			submitHandler: function(){
 				var data = rbform.serializeArray();
 				storeData(data);
-				$.mobile.changePage($('#home'));
 			} // ending function for submitHandler
 		}); // ending function for rbform.validate
 	}); // ending function for formSave
 	var storeData = function (myData) {
-	    var dataObj = {};
-		$.each(myData, function(i,item){
-			dataObj[item.name] = item.value;
+		var _id = 'contact' + Math.floor(Math.random() * 1000000001);
+		console.log(myData[0].value);
+		var theObj = {};
+		theObj._id = _id;
+		theObj.flname = (myData[0].value);
+		theObj.gender = (myData[1].value);
+		theObj.addy = (myData[2].value);
+		theObj.user = (myData[3].value);
+		theObj.itemName = (myData[4].value);
+		theObj.serialNum = (myData[5].value);
+		theObj.group = (myData[6].value);
+		
+		$.couch.db('serial_box').saveDoc(theObj, {
+			success : function(data){
+				alert('The Disc has been saved');
+				$.mobile.changePage($('#home'));
+			}
 		});
-	    console.log(dataObj);
-	    localStorage.setItem(key, JSON.stringify(dataObj));
-	    alert("Your information has saved!");
+		
 	}; // ending storeData function
 }); // ending #signup page load
 
 // mobile DOM loader ($) for #success page mobile method
-$('#success').live('pageinit', function () {
+$('#success').live('pageshow', function () {
 	var clearLink = $('#clear');
 	var displayLink = $('#display');
 	// display data
@@ -49,7 +64,7 @@ $('#success').live('pageinit', function () {
 			var key = localStorage.key(i);
 			var value = localStorage.getItem(key);
 			var obj = JSON.parse(value);
-			$('#dataPlay').append(localStorage.getItem(localStorage.key(i)));
+			// $('#dataPlay').append(localStorage.getItem(localStorage.key(i)));
 			console.log("Hi");	
 		};
 	});
@@ -139,7 +154,7 @@ var urlVars = function () {
 $('#contactPage').live('pageshow', function () {
 	var contact = urlVars()["contact"];
 	//console.log(contact);
-	$.couch.db("serial_box").view("app/contacts", {
+	$.couch.db("serial_box").view("app/data", {
 		key: "contact" + contact
 	});
 });
@@ -169,7 +184,6 @@ $('#edit').live('pageinit', function(){
 			},
 			submitHandler: function(){
 				var data = formEdit.serializeArray();
-				console.log(data);
 				storeData(data);
 				$.mobile.changePage($('#account'));
 			} // ending function for submitHandler
