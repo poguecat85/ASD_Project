@@ -68,56 +68,6 @@ $('#success').live('pageshow', function () {
 			console.log();	
 		};
 	});
-	
-	/*
-	var getData = function () {
-		if (localStorage.length === 0) {
-			alert("There is no saved data at this time!");
-			autoFillData();
-		}
-		// write data from local storage to the browser
-		var makeDiv = document.createElement('div');
-		makeDiv.setAttribute("id", "items");
-		var makeList = document.createElement('ul');
-		makeDiv.appendChild(makeList);
-		document.body.appendChild(makeDiv);
-		$('items').style.display = "block";
-		for (var i = 0, len=localStorage.length; i<len; i++) {
-			var makeLi = document.createElement('li');
-			var linksLi = document.createElement('li');
-			makeList.appendChild(makeLi);
-			var key = localStorage.key(i);
-			var value = localStorage.getItem(key);
-			//convert string from local storage value back to an object by using Json.parse()
-			var obj = JSON.parse(value);
-			var makeSubList = document.createElement('ul');
-			makeLi.appendChild(makeSubList);
-			getImg(obj.group[1], makeSubList);
-			for (var n in obj) {
-				var makeSubLi = document.createElement('li');
-				makeSubList.appendChild(makeSubLi);
-				var optSubText = obj[n][0]+" "+obj[n][1];
-				makeSubLi.innerHTML = optSubText;
-				makeSubList.appendChild(linksLi);
-			}
-			makeItemLinks(localStorage.key(i), linksLi); // create our edit and delete buttons/links in each item in local storage.
-		}
-		toggleControls("on");
-	};
-	*/
-	
-	/*
-	if (localStorage.key === "") {
-		alert("There is no data saved!");
-	} else {
-		clearLink.on('click', function(){
-			clearData(data);
-			console.log("clearLink pressed!");
-			alert("Data has been cleared");
-			$.mobile.changePage($('#account'));
-		}); // ending clearLink function
-	}; // ending clearLink function
-	*/
 }); //success page end 
 
 $('#displayPage').live('pageshow', function () {
