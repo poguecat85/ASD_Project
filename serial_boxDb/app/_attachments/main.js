@@ -46,7 +46,7 @@ $('#signup').live('pageshow', function () {
 		
 		$.couch.db('serial_box').saveDoc(theObj, {
 			success : function(data){
-				alert('The Disc has been saved');
+				alert('The contact has been saved!');
 				$.mobile.changePage($('#home'));
 			}
 		});
@@ -65,9 +65,10 @@ $('#success').live('pageshow', function () {
 			var value = localStorage.getItem(key);
 			var obj = JSON.parse(value);
 			// $('#dataPlay').append(localStorage.getItem(localStorage.key(i)));
-			console.log("Hi");	
+			console.log();	
 		};
 	});
+	
 	/*
 	var getData = function () {
 		if (localStorage.length === 0) {
@@ -123,10 +124,12 @@ $('#displayPage').live('pageshow', function () {
 	$.couch.db("serial_box").view("app/data", {
 		success: function (data) {
 			$.each(data.rows, function(index, value) {
+				var id= value.id;
 				var item = (value.value || value.doc);
+				console.log(id);
 				$('#dataPlay').append(
 					$('<li>').append(
-						$('<a>').attr("href", "contact.html?contact=" + item.flname)
+						$('<a>').attr("href", "contact.html?contact=" + id)
 						.text(item.flname)
 					)
 				);
@@ -153,47 +156,111 @@ var urlVars = function () {
 
 $('#contactPage').live('pageshow', function () {
 	var contact = urlVars()["contact"];
-	//console.log(contact);
-	$.couch.db("serial_box").view("app/data", {
-		key: "contact" + contact
+	$.couch.db("serial_box").openDoc(contact, {
+		success: function (data) {
+			var flname = data.flname;
+			var group = data.group;
+			var addy = data.addy;
+			var user = data.user;
+			var itemName = data.itemName;
+			var serialNum = data.serialNum;
+			$('<div class="individual">'+
+       			'<h3>'+ flname +'</h3>'+
+				'<ul class="inner">'+
+					'<li>Email: '+ addy +'</li>'+
+					'<li>Group: '+ group +'</li>'+
+					'<li>Username: '+ user +'</li>'+
+					'<li>Item Name: '+ itemName +'</li>'+
+					'<li>Serial Number: '+ serialNum +'</li>'+
+					'<li><a href="#" id="editLink">Edit Contact</a></li>' + 
+		        	'<li><a href="#" id="deleteLink">Delete Contact</a></li>'+
+		        '</ul>'+
+		        '</div>' 
+	        	  
+	        	).appendTo('#dataslot');
+	        	
+	        $('#deleteLink').live('click', function(){
+	        	var ask = confirm("Are you sure you want to delete this Contact?");
+	        	if(ask) {
+	        		$.couch.db("serial_box").removeDoc(data, {	
+	        			success: function(data) {
+	        				console.log(data);
+	        				document.location.href = 'index.html#success';
+	        			},
+	        			error: function(status) {
+	        				console.log(status);
+	        			}
+	        		});
+	        	}else{ 
+	        		alert("Sorry, contact not removed.");
+	       			document.location.href = 'index.html#success';
+	        	}
+	        });
+		}
 	});
 });
 
-	
+
+
 // mobile Dom loader ($) for #edit page mobile method
-$('#edit').live('pageinit', function(){
-	var formEdit = $('#editForm');
-	var	errorLink = $('#errlnk');
-	var sbtForm = $('#editSub');
-	
-	// save form function
-	sbtForm.on('click', function(){
-		console.log("works");
-		// form validation in jqm
-		editForm.validate({
-			invalidHandler: function(form, validator){
-				errorLink.click();
-				var html = '';
-				for(var key in validator.submitted){
-					var label = $('label[for^="' + key +'"]').not('[generated]');
-					var legend = label.closest('fieldset').find('.ui-controlgroup-label');
-					var fieldname = legend.length ? legend.text() : label.text();
-					html += '<li>' + fieldname + '</li>';
-				}
-				$("#editErr ul").html(html);
-			},
-			submitHandler: function(){
-				var data = formEdit.serializeArray();
-				storeData(data);
-				$.mobile.changePage($('#account'));
-			} // ending function for submitHandler
-		}); // ending function for rbform.validate
-	}); // ending function for formSave
-	var storeData = function (myData) {
-	    // setItem from signup_data
-	    localStorage.setItem('signup_data', myData);
-	    alert("Your information has saved!");
-	}; // ending storeData function
+$('#editLink').live('click', function(){
+	console.log("Pressed");
+	var contact = urlVars()["contact"];
+	$.mobile.changePage("index.html#signup");
+	$.couch.db("serial_box").openDoc(contact, {
+    	success: function(data) {
+    		flname = data.flname;
+    		group = data.group;
+    		addy = data.addy;
+    		user = data.user;
+    		itemName = data.itemName;
+    		serialNum = data.serialNum;
+			$('#flname').val(flname);
+		    $('#group').val(group);
+		    $('#addy').val(addy);
+		   // $('#groups').val(groups).selectmenu('refresh', true);
+			$('#user').val(user);
+		    $('#itemName').val(itemName);
+		    $('#serialNum').val(serialNum);
+        
+			// show edit item button, hide submit button
+			// var editButton = $('#editButton').css('display', 'block');
+			
+			// save changes
+			$('#editItem').on('click', function(){
+				var flname = $('#flname').val();
+			    var group = $('#group').val();
+			    var addy = $('#addy').val();
+			    var user = $('#user').val();
+				var itemName = $('#itemName').val();
+			    var serialNum = $('#serialNum').val();
+			    var item = {
+					"_id": data._id,
+					"_rev": data._rev,
+					"flname": flname,
+					"group": group,
+					"addy": addy,
+					"user": user,
+					"itemName": itemName,
+					"serialNum": serialNum		
+					};
+					console.log(item);
+
+				$.couch.db("serial_box").saveDoc(item, {
+					success: function(data) {
+						console.log(data);
+						alert("Contact was updated!");
+						document.location.href = 'index.html#success';
+					},
+					error: function(status) {
+        				console.log(status);
+        				alert("Contact was not updated.");
+    				}
+				});
+			return false;
+			});
+		}
+	});
 });
 
 // JSON List
