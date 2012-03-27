@@ -136,6 +136,7 @@ $('#contactPage').live('pageshow', function () {
 	        			success: function(data) {
 	        				console.log(data);
 	        				document.location.href = 'index.html#success';
+	        				console.log(location);
 	        			},
 	        			error: function(status) {
 	        				console.log(status);
@@ -146,6 +147,7 @@ $('#contactPage').live('pageshow', function () {
 	       			document.location.href = 'index.html#success';
 	        	}
 	        });
+	        $('#dataslot').listview('refresh');
 		}
 	});
 });

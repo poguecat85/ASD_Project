@@ -55,17 +55,17 @@
 				<ul data-role="listview" data-inset="true">
 					<!-- use h3 tags for button titles (preferred) and p tags for details -->
 					<li>
-						<a href="#success">
-							<img src="images/loginicon.jpg" />
-							<h3>Manage Contacts</h3>
-							<p>Access your serial box!</p>
-						</a>
-					</li>
-					<li>
 						<a href="#signup">
 							<img src="images/Both.png" />
 							<h3>Add Contacts</h3>
 							<p>Add to your serial box!</p>
+						</a>
+					</li>
+					<li>
+						<a href="#success">
+							<img src="images/loginicon.jpg" />
+							<h3>Manage Contacts</h3>
+							<p>Access your serial box!</p>
 						</a>
 					</li>
 				</ul>
@@ -79,7 +79,7 @@
 		<!-- signup page -->
 		<div data-role="page" id="signup">
 			<div data-role="header" data-position="fixed">
-				<h1>Register</h1>
+				<h1>Add Contact</h1>
 			</div>
 
 			<div data-role="content">
@@ -157,25 +157,23 @@
 		</div>
 								
 		<!-- success page -->
-		<div data-role="page" id="success">
+		<div data-role="page" id="success" data-add-back-btn="true">
 			<div data-role="header" data-position="fixed">
 				<h1>Manage Data</h1>
 			</div>
 			
 			<div data-role="navbar">
 				<ul>
-					<li><a href="#" id="clear">Clear Stored Data</a></li>
-					<li><a href="#displayPage" id="display">Display Stored Data</a></li>
-					<li><a href="#editPage" id="edit">Edit Stored Data</a></li>
-					<li><a href="#deletePage"id="delete">Delete Stored Data</a></li>
+					<li><a href="#displayPage" id="display" data-icon="info">Display</a></li>
+					<li><a href="#"	id="delete" data-icon="delete">Delete All</a></li>
 				</ul>
 			</div>
 			
 			<div data-role="footer" data-position="fixed" data-id="success">
 				<div data-role="navbar">
 					<ul>
-						<li><a href="#itemcount" data-icon="star">Add Serial</a></li>
-						<li><a href="#getitem" data-icon="gear">Get Serial</a></li>
+						<li><a href="#register" data-icon="star">Add Serial</a></li>
+						<li><a href="#displayPage" data-icon="gear">Get Serial</a></li>
 					</ul>
 				</div>
 			</div>
@@ -195,7 +193,7 @@
 		</div>
 		
 		<!-- display data -->
-		<div data-role="page" id="displayPage">
+		<div data-role="page" id="displayPage" data-add-back-btn="true">
 			<div data-role="header" data-position="fixed">
 				<h1>Data</h1>
 			</div>
